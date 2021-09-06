@@ -1,15 +1,14 @@
-# CRM web application
-## Client management system. 
+# CRM web application, Client management system. 
 
 To run my app, download repo and open .sln file, start it in debug mode.
 Requirements: Microsoft Visual Studio 2019, IIS, .NET Framework 4.6.1.
 
-### Roles in system:
+## Roles in system:
 - admin: manages the users and their roles
 - moderator: is responsible for companies management
 - user: no reponsibilities
 
-### Login to system:
+## Login to system:
 
 |ROLE|LOGIN|PASSWORD|
 |---|---|---|
