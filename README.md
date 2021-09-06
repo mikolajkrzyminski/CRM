@@ -16,6 +16,8 @@ Requirements: Microsoft Visual Studio 2019, IIS, .NET Framework 4.6.1.
 |MOD|mod@mod.com|Admin1.|
 |USER|user@user.com|Admin1.|
 
+-------------
+
 ![img1](https://github.com/mikolajkrzyminski/CRM/blob/master/CRMnew/img/appPic1.png?raw=true)
 
 ![img2](https://github.com/mikolajkrzyminski/CRM/blob/master/CRMnew/img/appPic2.png?raw=true)
