@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CRMnew.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -15,14 +16,14 @@ namespace CRMnew.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Aplikacja CRM na zaliczenie projektu z pracowni programowania.";
 
             return View();
         }
-
+        
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Strona kontaktowa.";
 
             return View();
         }

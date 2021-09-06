@@ -63,7 +63,7 @@ namespace CRMnew.Models
     }
 
     public class RegisterViewModel
-    {
+    {      
         [Required]
         [EmailAddress]
         [Display(Name = "Adres e-mail")]
@@ -79,6 +79,18 @@ namespace CRMnew.Models
         [Display(Name = "Potwierdź hasło")]
         [Compare("Password", ErrorMessage = "Hasło i jego potwierdzenie są niezgodne.")]
         public string ConfirmPassword { get; set; }
+
+        // Add the new UserFirstName UserSurname and DateOfBirth properties:
+        [Display(Name = "Imię")]
+        public string UserFirstName { get; set; }
+
+        [Display(Name = "Nazwisko")]
+        public string UserSurname { get; set; }
+
+        [Display(Name = "Data urodzenia")]
+        public System.DateTime DateOfBirth { get; set; }
+
+        public string Name { get; set; }        
     }
 
     public class ResetPasswordViewModel

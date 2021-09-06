@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -16,6 +17,9 @@ namespace CRMnew.Models
             // Dodaj tutaj niestandardowe oświadczenia użytkownika
             return userIdentity;
         }
+        public string UserFirstName { get; set; }
+        public string UserSurname { get; set; }
+        public System.DateTime DateOfBirth { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

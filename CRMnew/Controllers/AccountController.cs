@@ -12,8 +12,7 @@ using CRMnew.Models;
 
 namespace CRMnew.Controllers
 {
-    [Authorize]
-    public class AccountController : Controller
+    public class AccountController : CustomController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -83,7 +82,7 @@ namespace CRMnew.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, model.RememberMe });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Nieprawidłowa próba logowania.");
@@ -136,27 +135,41 @@ namespace CRMnew.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult Register()
         {
+            prjCRMEntities db = new prjCRMEntities();
+            ViewData["AspNetRoleId"] = new System.Web.Mvc.SelectList(db.AspNetRoles, "Id", "Name");
+            //ViewBag.AspNetRoleId = new SelectList(db.AspNetRoles, "Id", "Name");
             return View();
         }
 
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {UserName = model.Email, Email = model.Email };
+
+                user.UserFirstName = model.UserFirstName;
+                user.UserSurname   = model.UserSurname;
+                user.DateOfBirth   = model.DateOfBirth;              
+
                 var result = await UserManager.CreateAsync(user, model.Password);
+                
                 if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                {                
+                    prjCRMEntities db = new prjCRMEntities();
+                    AspNetRoles aspNetRoles = db.AspNetRoles.Find(Request.Params["AspNetRoleId"]);
+                    AspNetUsers aspNetUsers = db.AspNetUsers.Find(user.Id);
+                    aspNetUsers.AspNetRoles.Add(aspNetRoles);
+                    db.SaveChanges();
+                    // await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
                     // Aby uzyskać więcej informacji o sposobie włączania potwierdzania konta i resetowaniu hasła, odwiedź stronę https://go.microsoft.com/fwlink/?LinkID=320771
                     // Wyślij wiadomość e-mail z tym łączem
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -314,7 +327,7 @@ namespace CRMnew.Controllers
             {
                 return View("Error");
             }
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
 
         //

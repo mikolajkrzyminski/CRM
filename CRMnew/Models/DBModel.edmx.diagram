@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="efc45b6f133d4e5ebb3e1733a2b6180a" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="prjCRMModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="prjCRMModel.AspNetRoles" Width="1.5" PointX="0.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="prjCRMModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="prjCRMModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="prjCRMModel.AspNetUsers" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="prjCRMModel.Branches" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="prjCRMModel.Companies" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="prjCRMModel.ContactPersons" Width="1.5" PointX="9" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="prjCRMModel.Notes" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="prjCRMModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="prjCRMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="prjCRMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="prjCRMModel.FK__ContactPe__UserI__5EBF139D" />
+        <AssociationConnector Association="prjCRMModel.FK__Notes__UserId__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="prjCRMModel.FK__Companies__Branc__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="prjCRMModel.FK__ContactPe__Compa__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="prjCRMModel.FK__Notes__CompanyId__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="prjCRMModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="prjCRMModel.FK__Companies__UserI__6E01572D" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
